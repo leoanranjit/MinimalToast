@@ -21,15 +21,15 @@ public class Toast {
         
         view.backgroundColor = UIColor(named: "background", in: bundle, compatibleWith: nil)!
         
-//        view.layer.cornerRadius = view.frame.height / 2
-//        
-//        view.layer.shadowColor = UIColor.black.cgColor
-//        
-//        view.layer.shadowOffset = CGSize(width: 0, height: 4)
-//        
-//        view.layer.shadowRadius = 10
-//        
-//        view.layer.shadowOpacity = 0.15
+        view.layer.cornerRadius = view.frame.height / 2
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+        view.layer.shadowRadius = 10
+        
+        view.layer.shadowOpacity = 0.15
         
         return view
         
