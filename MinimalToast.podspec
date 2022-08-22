@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'leoanranjit' => 'demonlr509@gmail.com' }
-    s.source           = { :git => 'https://github.com/leoanranjit/LoadingView.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/leoanranjit/MinimalToast', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
     s.ios.deployment_target = '11.0'
