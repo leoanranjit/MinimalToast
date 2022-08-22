@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
@@ -37,9 +37,9 @@ Pod::Spec.new do |s|
         "ios": "11.0"
     }
     
-     s.resource_bundles = {
-       'MinimalToast' => ['MinimalToast/Sources/**']
-     }
+#     s.resource_bundles = {
+#       'MinimalToast' => ['MinimalToast/Sources/**']
+#     }
 
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'
