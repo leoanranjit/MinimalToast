@@ -1,0 +1,6 @@
+framework module MinimalToast {
+  umbrella header "MinimalToast-umbrella.h"
+
+  export *
+  module * { export * }
+}

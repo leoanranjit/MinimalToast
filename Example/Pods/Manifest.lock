@@ -1,0 +1,16 @@
+PODS:
+  - MinimalToast (0.1.0)
+
+DEPENDENCIES:
+  - MinimalToast (from `../`)
+
+EXTERNAL SOURCES:
+  MinimalToast:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MinimalToast: f32ea153e1dd865e8f978f7523a36c47be6c1403
+
+PODFILE CHECKSUM: 5291ca0369f434f66c081d03fcc0b71e4e8aa0c2
+
+COCOAPODS: 1.11.3

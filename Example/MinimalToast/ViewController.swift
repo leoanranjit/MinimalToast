@@ -7,18 +7,80 @@
 //
 
 import UIKit
+import MinimalToast
 
 class ViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var txtMessage: UITextField!
+    @IBOutlet weak var btnSuccess: UIButton!
+    @IBOutlet weak var btnFailed: UIButton!
+    @IBOutlet weak var btnWarning: UIButton!
+    
+    // MARK: - Constants and variables
+    var state : Toast.State = .success
+    
+    // MARK: - ViewController Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        btnSuccess.isSelected = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
     }
-
+    
+    // MARK: - IBAction Functions
+    @IBAction func btnState(_ sender: UIButton) {
+        
+        sender.isSelected = true
+        
+        let btnArray : [UIButton] = [btnSuccess, btnFailed, btnWarning]
+        
+        for i in btnArray {
+            
+            if i != sender {
+                
+                i.isSelected = false
+                
+            }
+            
+        }
+        
+        switch sender.tag {
+            
+        case 0:
+            
+            self.state = .success
+            
+        case 1:
+            
+            self.state = .failed
+            
+        case 2:
+            
+            self.state = .warning
+            
+        default:
+            
+            break
+            
+        }
+        
+    }
+    
+    @IBAction func btnShowToast(_ sender: Any) {
+        
+        if txtMessage.text == "" {
+            
+            self.txtMessage.placeholder = "Enter Toast Message First"
+            
+        }else{
+            
+            Toast.showToast(state: self.state, message: txtMessage.text!)
+            
+        }
+        
+    }
+    // MARK: - Additional Functions
 }
+
 
