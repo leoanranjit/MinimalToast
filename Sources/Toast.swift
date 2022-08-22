@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 
 public class Toast {
     
@@ -54,6 +55,8 @@ public class Toast {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         
         lbl.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        lbl.textColor = UIColor.darkText
                 
         lbl.numberOfLines = 4
         
@@ -148,6 +151,8 @@ public class Toast {
         Toast.imgStatus.image = state.getImages()
         
         Toast.imgStatus.tintColor  = state.getColors()
+        
+        AudioServicesPlaySystemSound(1520)
         
     }
     
