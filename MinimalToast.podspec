@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
