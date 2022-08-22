@@ -9,9 +9,9 @@
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
   s.version          = '0.1.0'
-  s.summary          = ''
+  s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
-  # A minimalistic toast message with three states: Error, Warning and Success.
+  
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
