@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   'MinimalToast is a minimal toast message pods that has three states to play with: Error, Warning and Success. It is very easy to use, just write Toast.showToast(state: <State>, message: <String>)'
                          DESC
 
-    s.homepage         = 'https://github.com/leoanranjit/LoadingView'
+    s.homepage         = 'https://github.com/leoanranjit/MinimalToast'
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'leoanranjit' => 'demonlr509@gmail.com' }
