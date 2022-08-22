@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
     }
     
      s.resource_bundles = {
-       'LoadingView' => ['LoadingView/Sources/*.xcassets']
+       'MinimalToast' => ['MinimalToast/Sources/*.xcassets']
      }
 
     # s.public_header_files = 'Pod/Classes/**/*.h'
