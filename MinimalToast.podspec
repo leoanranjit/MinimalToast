@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'leoanranjit' => 'demonlr509@gmail.com' }
-    s.source           = { :git => 'https://github.com/leoanranjit/MinimalToast', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/leoanranjit/MinimalToast.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
     s.ios.deployment_target = '11.0'
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
     }
     
      s.resource_bundles = {
-       'MinimalToast' => ['MinimalToast/Sources/*.xcassets']
+       'MinimalToast' => ['MinimalToast/Sources/**']
      }
 
     # s.public_header_files = 'Pod/Classes/**/*.h'
