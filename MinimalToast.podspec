@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '11.0'
 
     s.source_files = 'Sources/**/*.swift'
+    s.resources = "Sources/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,pdf,json}"
     s.swift_versions = '4.0'
     s.platforms = {
         "ios": "11.0"
