@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MinimalToast'
-  s.version          = '0.1.7'
+  s.version          = '0.2.0'
   s.summary          = 'A minimalistic toast message with three states: Error, Warning and Success.'
 
   
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
     s.description      = <<-DESC
-  'MinimalToast is a minimal toast message pods that has three states to play with: Error, Warning and Success. It is very easy to use, just write Toast.showToast(state: <State>, message: <String>)'
+  'MinimalToast is a minimal toast message pods that has three states to play with: Error, Warning and Success. It is very easy to use, just write Toast.showToast(state: <State>, message: <String>). Now with animation: Just use Toast.animates boolean to activate/deactivate the animation.'
                          DESC
 
     s.homepage         = 'https://github.com/leoanranjit/MinimalToast'
