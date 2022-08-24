@@ -11,6 +11,8 @@ import AudioToolbox
 
 public class Toast {
     
+    public static var animates: Bool = true
+    
     //MARK: - Initialization
     fileprivate static var toastView : UIView = {
         
@@ -61,6 +63,25 @@ public class Toast {
         lbl.numberOfLines = 4
         
         return lbl
+        
+    }()
+    
+    //MARK: - Image and Label Stack View Created
+    fileprivate static var imageAndLabelStackView: UIStackView = {
+        
+        var stackView = UIStackView()
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.axis         = .horizontal
+        
+        stackView.spacing      = 5
+        
+        stackView.addArrangedSubview(Toast.imgStatus)
+        
+        stackView.addArrangedSubview(Toast.lblStatus)
+        
+        return stackView
         
     }()
         
@@ -159,14 +180,42 @@ public class Toast {
     @objc fileprivate static func removeToast(){
         
         let window = UIApplication.shared.keyWindow!
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
-                        
-            self.toastView.transform = CGAffineTransform(translationX: 0, y: -(16 + window.safeAreaInsets.top + (UIApplication.shared.statusBarFrame.height ) + self.toastView.frame.height))
+
+        if animates{
             
-        }) { completed in
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.1, options: []) {
+                
+                self.toastView.transform = CGAffineTransform(translationX: 0, y: 3)
+                
+                self.lblStatus.alpha = 0
+                
+                self.lblStatus.isHidden = true
+                
+            } completion: { _ in
+                
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
+                                
+                    self.toastView.transform = CGAffineTransform(translationX: 0, y: -(16 + window.safeAreaInsets.top + (UIApplication.shared.statusBarFrame.height ) + self.toastView.frame.height))
+                    
+                }) { completed in
+                    
+                    self.toastView.removeFromSuperview()
+                    
+                }
+                
+            }
             
-            self.toastView.removeFromSuperview()
+        }else{
+            
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
+                            
+                self.toastView.transform = CGAffineTransform(translationX: 0, y: -(16 + window.safeAreaInsets.top + (UIApplication.shared.statusBarFrame.height ) + self.toastView.frame.height))
+                
+            }) { completed in
+                
+                self.toastView.removeFromSuperview()
+                
+            }
             
         }
         
@@ -180,9 +229,21 @@ public class Toast {
         
         self.toastView.transform = CGAffineTransform(translationX: 0, y: -(16 + window.safeAreaInsets.top + (UIApplication.shared.statusBarFrame.height )))
         
-        self.toastView.addSubview(self.imgStatus)
+        if animates{
+            
+            self.lblStatus.alpha = 0
+            
+            self.lblStatus.isHidden = true
+            
+        }else{
+            
+            self.lblStatus.alpha = 1
+            
+            self.lblStatus.isHidden = false
+            
+        }
         
-        self.toastView.addSubview(self.lblStatus)
+        self.toastView.addSubview(self.imageAndLabelStackView)
         
         // Toast View Constraints
         NSLayoutConstraint.activate([
@@ -197,29 +258,31 @@ public class Toast {
                 
         // Toast View's Image Constraints
         NSLayoutConstraint.activate([
+            
+            self.imageAndLabelStackView.leadingAnchor.constraint(equalTo: self.toastView.leadingAnchor, constant: 10),
+            
+            self.imageAndLabelStackView.trailingAnchor.constraint(equalTo: self.toastView.trailingAnchor, constant: -10),
         
             self.imgStatus.heightAnchor.constraint(equalTo: window.heightAnchor, multiplier: 0.025),
             
             self.imgStatus.widthAnchor.constraint(equalTo: self.imgStatus.heightAnchor),
             
-            self.imgStatus.centerYAnchor.constraint(equalTo: self.toastView.centerYAnchor),
+            self.imageAndLabelStackView.topAnchor.constraint(equalTo: self.toastView.topAnchor, constant: 10),
             
-            self.imgStatus.leadingAnchor.constraint(equalTo: self.toastView.leadingAnchor, constant: 10)
+            self.toastView.bottomAnchor.constraint(equalTo: self.imageAndLabelStackView.bottomAnchor, constant: 10)
             
         ])
         
-        // Toast View's Message Constraints
-        NSLayoutConstraint.activate([
-        
-            self.lblStatus.leadingAnchor.constraint(equalTo: self.imgStatus.trailingAnchor, constant: 4),
-            
-            self.toastView.trailingAnchor.constraint(equalTo: self.lblStatus.trailingAnchor, constant: 10),
-            
-            self.lblStatus.topAnchor.constraint(equalTo: self.toastView.topAnchor, constant: 10),
-            
-            self.toastView.bottomAnchor.constraint(equalTo: self.lblStatus.bottomAnchor, constant: 10)
-            
-        ])
+//        // Toast View's Message Constraints
+//        NSLayoutConstraint.activate([
+//
+//            self.lblStatus.leadingAnchor.constraint(equalTo: self.imgStatus.trailingAnchor, constant: 4),
+//
+//            self.toastView.trailingAnchor.constraint(equalTo: self.lblStatus.trailingAnchor, constant: 10),
+//
+//
+//
+//        ])
         
         DispatchQueue.main.async {
             
@@ -227,11 +290,27 @@ public class Toast {
             
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
+       
+        
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: []) {
             
             self.toastView.transform = .identity
             
-        }, completion: nil)
+        } completion: { completed in
+            
+            if animates{
+                
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: []) {
+                    
+                    self.lblStatus.alpha = 1
+                    
+                    self.lblStatus.isHidden = false
+                    
+                } completion: { _ in }
+                
+            }
+            
+        }
 
     }
 

@@ -12,7 +12,7 @@
         <!--Toast-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="ToastMessage_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MinimalToast_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,17 +112,39 @@
                                     <constraint firstItem="BEl-lv-28R" firstAttribute="leading" secondItem="Z4d-7f-igY" secondAttribute="leading" id="RNV-EJ-2pW"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edG-Qk-b4w">
+                                <rect key="frame" x="292" y="491" width="90" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="4J2-MM-qKi"/>
+                                    <constraint firstAttribute="height" constant="18" id="pfF-5b-xzC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" systemColor="tintColor"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Animates" image="square" catalog="system">
+                                    <color key="titleColor" systemColor="tintColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
+                                <state key="selected" image="checkmark.square.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="btnAnimates:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJD-mz-zV8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="edG-Qk-b4w" firstAttribute="trailing" secondItem="Z4d-7f-igY" secondAttribute="trailing" id="1kJ-Js-oGe"/>
                             <constraint firstItem="Z4d-7f-igY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="32t-3n-tuL"/>
+                            <constraint firstItem="edG-Qk-b4w" firstAttribute="centerY" secondItem="HdG-AO-yTT" secondAttribute="centerY" id="EQS-hY-7bp"/>
                             <constraint firstItem="Z4d-7f-igY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YUh-Ea-HHL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z4d-7f-igY" secondAttribute="trailing" constant="32" id="uN3-pf-Ui8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Toast" id="ZgB-5w-xnK"/>
                     <connections>
+                        <outlet property="btnAnimates" destination="edG-Qk-b4w" id="UjD-A6-JcM"/>
                         <outlet property="btnFailed" destination="NDJ-6Q-CN0" id="1ly-7O-pE7"/>
                         <outlet property="btnSuccess" destination="mOI-WJ-xn4" id="xsX-vK-18X"/>
                         <outlet property="btnWarning" destination="0Ms-HO-ub3" id="d8B-z7-GLW"/>
@@ -169,6 +191,9 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

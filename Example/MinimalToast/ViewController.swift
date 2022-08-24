@@ -16,10 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnSuccess: UIButton!
     @IBOutlet weak var btnFailed: UIButton!
     @IBOutlet weak var btnWarning: UIButton!
+    @IBOutlet weak var btnAnimates: UIButton!
     
     // MARK: - Constants and variables
     var state : Toast.State = .success
-    
+        
     // MARK: - ViewController Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,13 +75,25 @@ class ViewController: UIViewController {
             self.txtMessage.placeholder = "Enter Toast Message First"
             
         }else{
-            
+                        
             Toast.showToast(state: self.state, message: txtMessage.text!)
             
         }
         
     }
+    
+    @IBAction func btnAnimates(_ sender: Any) {
+                
+        Toast.animates = !Toast.animates
+        
+        btnAnimates.isSelected = !btnAnimates.isSelected
+        
+        print(Toast.animates)
+        
+    }
+    
     // MARK: - Additional Functions
+    
 }
 
 
