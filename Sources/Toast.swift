@@ -60,7 +60,7 @@ public class Toast {
         
         lbl.textColor = UIColor.darkText
                 
-        lbl.numberOfLines = 4
+        lbl.numberOfLines = 2
         
         return lbl
         
@@ -74,6 +74,10 @@ public class Toast {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.axis         = .horizontal
+        
+        stackView.alignment = .center
+        
+        stackView.distribution = .fill
         
         stackView.spacing      = 5
         
@@ -165,13 +169,13 @@ public class Toast {
         
         Toast.startClearTimer()
         
-        addConstraints()
-        
         Toast.lblStatus.text = message
                 
         Toast.imgStatus.image = state.getImages()
         
         Toast.imgStatus.tintColor  = state.getColors()
+        
+        addConstraints()
         
         AudioServicesPlaySystemSound(1520)
         
@@ -259,30 +263,19 @@ public class Toast {
         // Toast View's Image Constraints
         NSLayoutConstraint.activate([
             
+            self.imgStatus.widthAnchor.constraint(equalTo: window.widthAnchor, multiplier: 0.05),
+            
+            self.imgStatus.heightAnchor.constraint(equalTo: self.imgStatus.widthAnchor),
+            
             self.imageAndLabelStackView.leadingAnchor.constraint(equalTo: self.toastView.leadingAnchor, constant: 10),
             
             self.imageAndLabelStackView.trailingAnchor.constraint(equalTo: self.toastView.trailingAnchor, constant: -10),
-        
-            self.imgStatus.heightAnchor.constraint(equalTo: window.heightAnchor, multiplier: 0.025),
-            
-            self.imgStatus.widthAnchor.constraint(equalTo: self.imgStatus.heightAnchor),
-            
+                        
             self.imageAndLabelStackView.topAnchor.constraint(equalTo: self.toastView.topAnchor, constant: 10),
             
             self.toastView.bottomAnchor.constraint(equalTo: self.imageAndLabelStackView.bottomAnchor, constant: 10)
             
         ])
-        
-//        // Toast View's Message Constraints
-//        NSLayoutConstraint.activate([
-//
-//            self.lblStatus.leadingAnchor.constraint(equalTo: self.imgStatus.trailingAnchor, constant: 4),
-//
-//            self.toastView.trailingAnchor.constraint(equalTo: self.lblStatus.trailingAnchor, constant: 10),
-//
-//
-//
-//        ])
         
         DispatchQueue.main.async {
             
